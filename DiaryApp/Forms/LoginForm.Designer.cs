@@ -95,7 +95,7 @@
             this.SignInButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SignInButton.Location = new System.Drawing.Point(232, 154);
             this.SignInButton.Name = "SignInButton";
-            this.SignInButton.Size = new System.Drawing.Size(87, 34);
+            this.SignInButton.Size = new System.Drawing.Size(85, 30);
             this.SignInButton.TabIndex = 1;
             this.SignInButton.Text = "Sign In";
             this.SignInButton.UseVisualStyleBackColor = true;

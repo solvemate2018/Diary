@@ -1,4 +1,5 @@
-﻿using DiaryApp.Models;
+﻿using DiaryApp.Controllers;
+using DiaryApp.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,17 +19,19 @@ namespace DiaryApp.Forms
             InitializeComponent();
         }
 
+        Controller controller = new Controller();
+
         private void SignInButton_Click(object sender, EventArgs e)
         {
-            if (UsernameTextBox.TextLength == 0 || PasswordTextBox.TextLength == 0)
+            string username = UsernameTextBox.Text;
+            string password = PasswordTextBox.Text;
+            try
             {
-                MessageBox.Show("Please, enter valid username and password!", "Messege");
+                controller.CheckLogin(username, password);
             }
-            else
+            catch (ArgumentException ex)
             {
-                string username = UsernameTextBox.Text;
-                string password = PasswordTextBox.Text;
-                User user = new User(username, password);
+                MessageBox.Show(ex.Message, "Messege");
             }
         }
 
