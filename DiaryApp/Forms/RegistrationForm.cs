@@ -18,21 +18,36 @@ namespace DiaryApp.Forms
             InitializeComponent();
         }
 
-        Controller controller = new Controller();
+        private UserController UserController = new UserController();
 
-        private void RegistrationButton_Click(object sender, EventArgs e)
+        private void ClosingButton_Click(object sender, EventArgs e)
         {
-            string username = UsernameBox.Text;
-            string password = PasswordBox.Text;
+            Application.Exit();
+        }
+
+        private void RegistrateButton_Click(object sender, EventArgs e)
+        {
+            string username = UsernameTextBox.Text;
+            string password = PasswordTextBox.Text;
             string confirmPassword = ConfirmPasswordBox.Text;
+
+            bool isRegistrated = false;
 
             try
             {
-                controller.Registrating(username, password, confirmPassword);
+                isRegistrated = UserController.Registrate(username, password, confirmPassword);
             }
-            catch (ArgumentException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Messege");
+                MessageBox.Show(ex.Message, "Error");
+            }
+
+            if (isRegistrated)
+            {
+                this.Close();
+                LoginForm loginForm = new LoginForm();
+                loginForm.Show();
+                MessageBox.Show("You have been registrated", "Messege");
             }
         }
     }

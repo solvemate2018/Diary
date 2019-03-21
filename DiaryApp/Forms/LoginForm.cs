@@ -1,5 +1,5 @@
 ﻿using DiaryApp.Controllers;
-using DiaryApp.Models;
+using DiaryApp.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,28 +14,41 @@ namespace DiaryApp.Forms
 {
     public partial class LoginForm : Form
     {
+        private UserController UserController = new UserController();
         public LoginForm()
         {
             InitializeComponent();
         }
 
-        Controller controller = new Controller();
-
-        private void SignInButton_Click(object sender, EventArgs e)
+        private void LoginButton_Click(object sender, EventArgs e)
         {
             string username = UsernameTextBox.Text;
             string password = PasswordTextBox.Text;
+            User user = new User(username, password);
+            bool canLogin = false;
             try
             {
-                controller.CheckLogin(username, password);
+                canLogin = UserController.Login(user);
             }
-            catch (ArgumentException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Messege");
+                MessageBox.Show(ex.Message, "Error");
             }
+            if (canLogin)
+            {
+                this.Close();
+                Form MainForm = new MainWindow();
+                MainForm.Show();
+            }
+
         }
 
-        private void RegisterLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void ClosingButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void RegistrationLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Form registrationForm = new RegistrationForm();
             this.Close();
