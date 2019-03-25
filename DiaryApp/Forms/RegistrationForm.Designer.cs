@@ -86,6 +86,7 @@
             this.PasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PasswordTextBox.Location = new System.Drawing.Point(201, 111);
             this.PasswordTextBox.Name = "PasswordTextBox";
+            this.PasswordTextBox.PasswordChar = '*';
             this.PasswordTextBox.Size = new System.Drawing.Size(192, 26);
             this.PasswordTextBox.TabIndex = 10;
             // 
@@ -112,6 +113,7 @@
             this.ConfirmPasswordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConfirmPasswordBox.Location = new System.Drawing.Point(201, 144);
             this.ConfirmPasswordBox.Name = "ConfirmPasswordBox";
+            this.ConfirmPasswordBox.PasswordChar = '*';
             this.ConfirmPasswordBox.Size = new System.Drawing.Size(191, 26);
             this.ConfirmPasswordBox.TabIndex = 15;
             // 

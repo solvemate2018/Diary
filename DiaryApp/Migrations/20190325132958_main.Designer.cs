@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DiaryApp.Migrations
 {
     [DbContext(typeof(DiaryContext))]
-    [Migration("20190321131831_add-migration main")]
-    partial class addmigrationmain
+    [Migration("20190325132958_main")]
+    partial class main
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -57,6 +57,9 @@ namespace DiaryApp.Migrations
                         .HasMaxLength(30);
 
                     b.HasKey("ID");
+
+                    b.HasIndex("Username")
+                        .IsUnique();
 
                     b.ToTable("Users");
                 });

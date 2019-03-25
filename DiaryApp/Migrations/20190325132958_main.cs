@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DiaryApp.Migrations
 {
-    public partial class addmigrationmain : Migration
+    public partial class main : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -46,6 +46,12 @@ namespace DiaryApp.Migrations
                 name: "IX_Notes_UserID",
                 table: "Notes",
                 column: "UserID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_Username",
+                table: "Users",
+                column: "Username",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

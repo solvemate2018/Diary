@@ -37,7 +37,7 @@ namespace DiaryApp.Forms
             if (canLogin)
             {
                 this.Close();
-                Form MainForm = new MainWindow();
+                Form MainForm = new MainWindow(user);
                 MainForm.Show();
             }
 

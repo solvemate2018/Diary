@@ -56,6 +56,9 @@ namespace DiaryApp.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("Username")
+                        .IsUnique();
+
                     b.ToTable("Users");
                 });
 
