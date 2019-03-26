@@ -28,7 +28,7 @@ namespace DiaryApp.Forms
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        private void InitializeComponent(string username)
         {
             this.TitleLabel = new System.Windows.Forms.Label();
             this.MessegeLabel = new System.Windows.Forms.Label();
@@ -134,7 +134,7 @@ namespace DiaryApp.Forms
             this.UsernameLabel.Name = "UsernameLabel";
             this.UsernameLabel.Size = new System.Drawing.Size(139, 31);
             this.UsernameLabel.TabIndex = 9;
-            this.UsernameLabel.Text = "Username";
+            this.UsernameLabel.Text = username;
             this.UsernameLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // MainWindow

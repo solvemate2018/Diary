@@ -1,6 +1,7 @@
 ﻿using DiaryApp.Controllers;
 using DiaryApp.Data;
 using DiaryApp.Data.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,7 +20,7 @@ namespace DiaryApp.Forms
         NoteController NoteController = new NoteController();
         public MainWindow(User currentUser)
         {
-            InitializeComponent();
+            InitializeComponent(currentUser.Username);
             NoteController.SetCurrentUser(currentUser);
         }
 
@@ -31,10 +32,7 @@ namespace DiaryApp.Forms
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            Note currentNote = new Note(TitleBox.Text, MessegeBox.Text);
-            NoteController.currentUser.Notes.Add(currentNote);
-            context.Notes.Add(currentNote);
-            context.SaveChanges();
+            NoteController.AddNote(new Note(TitleBox.Text, MessegeBox.Text));
 
             TitleBox.Clear();
             MessegeBox.Clear();
@@ -59,7 +57,7 @@ namespace DiaryApp.Forms
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            NotesGridView1.DataSource = NoteController.currentUser.Notes;
+            NotesGridView1.DataSource = NoteController.GetDataSourceForGridView();
         }
     }
 }
