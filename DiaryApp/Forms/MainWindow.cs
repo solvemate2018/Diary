@@ -36,6 +36,7 @@ namespace DiaryApp.Forms
 
             TitleBox.Clear();
             MessegeBox.Clear();
+            NotesGridView1.DataSource = NoteController.GetDataSourceForGridView();
         }
 
         private void ReadButton_Click(object sender, EventArgs e)

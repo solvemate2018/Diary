@@ -28,6 +28,7 @@ namespace DiaryApp.Data.Models
         {
             Username = username;
             Password = password;
+            Notes = new List<Note>();
         }
     }
 }

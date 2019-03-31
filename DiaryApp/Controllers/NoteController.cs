@@ -11,7 +11,6 @@ namespace DiaryApp.Controllers
 {
     public class NoteController
     {
-        object NotesTitles;
         DiaryContext DBContext = new DiaryContext();
 
         public User currentUser;
@@ -48,8 +47,11 @@ namespace DiaryApp.Controllers
 
         public object GetDataSourceForGridView()
         {
-            NotesTitles = DBContext.Notes.Where(x => x.ID == currentUser.Notes.First().ID).Select(x => new { x.Title }).ToList();
-            return NotesTitles;
+            if (currentUser.Notes.Count == 0)
+            {
+                return new List<string> { "Nothing here" };
+            }
+            return DBContext.Notes.Where(note => note.ID == currentUser.Notes.First().ID).Select(note => note.Title).ToList();
         }
     }
 }

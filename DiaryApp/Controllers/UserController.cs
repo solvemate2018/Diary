@@ -18,17 +18,19 @@ namespace DiaryApp.Controllers
 
         public bool Login(User user)
         {
+            User contextUser = Context.Users.Where(x => x.Username.Contains(user.Username)).First();
+
             if (user.Username == "" || user.Password == "")
             {
                 throw new ArgumentNullException("Enter valid data");
             }
-            else if (Context.Users.Where(x => x.Username.Contains(user.Username)).Count() == 0 && Context.Users.Where(x => x.Username.Contains(user.Username)).First().Password != user.Password)
+            else if (contextUser != null && contextUser.Password != user.Password)
             {
                 throw new ArgumentException("There is no such account");
             }
             else
             {
-                currentUser = user;
+                currentUser = contextUser;
                 return true;
             }
         }
