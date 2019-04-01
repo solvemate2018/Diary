@@ -244,9 +244,9 @@
     <Compile Include="Forms\RegistrationForm.Designer.cs">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20190325132958_main.cs" />
-    <Compile Include="Migrations\20190325132958_main.designer.cs">
-      <DependentUpon>20190325132958_main.cs</DependentUpon>
+    <Compile Include="Migrations\20190401124916_main.cs" />
+    <Compile Include="Migrations\20190401124916_main.designer.cs">
+      <DependentUpon>20190401124916_main.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DiaryContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />

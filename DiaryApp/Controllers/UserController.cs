@@ -11,49 +11,57 @@ namespace DiaryApp.Controllers
 {
     public class UserController
     {
-        DiaryContext Context = new DiaryContext();
-
         public User currentUser;
 
-
-        public bool Login(User user)
+        public bool Login(string username, string password)
         {
-            User contextUser = Context.Users.Where(x => x.Username.Contains(user.Username)).First();
-
-            if (user.Username == "" || user.Password == "")
+            using (var context = new DiaryContext())
             {
-                throw new ArgumentNullException("Enter valid data");
-            }
-            else if (contextUser != null && contextUser.Password != user.Password)
-            {
-                throw new ArgumentException("There is no such account");
-            }
-            else
-            {
-                currentUser = contextUser;
-                return true;
+                if (!context.Users.Select(x => x.Username).Contains(username))
+                {
+                    throw new ArgumentException("Incorrect Username");
+                }
+                else if (context.Users.Where(x => x.Username == username).First().Password != password)
+                {
+                    throw new ArgumentException("Incorrect password");
+                }
+                else
+                {
+                    currentUser = new User(username, password);
+                    return true;
+                }
             }
         }
 
         public bool Registrate(string username, string password, string confirmPassword)
         {
-            User user = new User(username, password);
-
             if (password != confirmPassword)
             {
-                throw new ArgumentException("Passwords are different");
-            }
-            else if (Context.Users.Where(x => x.Username.Contains(user.Username)).Count() == 0)
-            {
-                throw new ArgumentException("The User is already registrated");
+                throw new ArgumentException("Passwords do not match");
             }
 
-            else
+            using (var context = new DiaryContext())
             {
-                Context.Users.Add(user);
-                Context.SaveChanges();
-                return true;
+                if (context.Users.Select(x => x.Username).Contains(username))
+                {
+                    throw new ArgumentException("User is already registrated");
+                }
+                else if (username.Count() < 4)
+                {
+                    throw new ArgumentException("Username must be at least 4 letters");
+                }
+                else if (password.Count() < 4)
+                {
+                    throw new ArgumentException("Password must be at least 4 letters");
+                }
+                else
+                {
+                    context.Users.Add(new User(username, password));
+                    context.SaveChanges();
+                }
             }
+
+            return true;
         }
 
     }

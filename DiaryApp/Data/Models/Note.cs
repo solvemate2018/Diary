@@ -20,6 +20,9 @@ namespace DiaryApp.Data.Models
         [Required]
         public string Text { get; set; }
 
+        [Required]
+        public int UserID { get; set; }
+
         public Note(string title, string text)
         {
             Title = title;

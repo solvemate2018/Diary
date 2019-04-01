@@ -16,12 +16,12 @@ namespace DiaryApp.Forms
 {
     public partial class MainWindow : Form
     {
-        DiaryContext context = new DiaryContext();
         NoteController NoteController = new NoteController();
-        public MainWindow(User currentUser)
+
+        public MainWindow(string username, string password)
         {
-            InitializeComponent(currentUser.Username);
-            NoteController.SetCurrentUser(currentUser);
+            InitializeComponent(username);
+            NoteController.SetCurrentUser(new User(username, password));
         }
 
         private void NewButton_Click(object sender, EventArgs e)
@@ -32,33 +32,48 @@ namespace DiaryApp.Forms
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            NoteController.AddNote(new Note(TitleBox.Text, MessegeBox.Text));
+            var title = TitleBox.Text;
+            var text = MessegeBox.Text;
 
-            TitleBox.Clear();
-            MessegeBox.Clear();
-            NotesGridView1.DataSource = NoteController.GetDataSourceForGridView();
+            try
+            {
+                NoteController.SaveNote(title, text);
+            }
+            catch (ArgumentException exeption)
+            {
+                MessageBox.Show(exeption.Message, "Error");
+            }
+            
+            NotesGridView1.DataSource = NoteController.GetBindingSource();
+
+            if (NotesGridView1.DataSource != null)
+            {
+                NotesGridView1.Columns["Id"].Visible = false;
+                NotesGridView1.Columns["UserId"].Visible = false;
+                NotesGridView1.Columns["Text"].Visible = false;
+            }
         }
 
         private void ReadButton_Click(object sender, EventArgs e)
         {
-            int index = NotesGridView1.CurrentCell.RowIndex;
-
-            if (index > -1)
-            {
-                TitleBox.Text = NoteController.GetTitle(index);
-                MessegeBox.Text = NoteController.GetText(index);
-            }
+            string title = NotesGridView1.CurrentCell.Value.ToString();
+            TitleBox.Text = title;
+            MessegeBox.Text = NoteController.GetText(title);
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            int index = NotesGridView1.CurrentCell.RowIndex;
-            NoteController.DeleteNote(index);
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            NotesGridView1.DataSource = NoteController.GetDataSourceForGridView();
+            NotesGridView1.DataSource = NoteController.GetBindingSource();
+            if (NotesGridView1.DataSource != null)
+            {
+                NotesGridView1.Columns["Id"].Visible = false;
+                NotesGridView1.Columns["UserId"].Visible = false;
+                NotesGridView1.Columns["Text"].Visible = false;
+            }
         }
     }
 }

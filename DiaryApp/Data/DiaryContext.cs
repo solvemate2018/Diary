@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DiaryApp.Data
 {
-    public class DiaryContext: DbContext
+    public class DiaryContext : DbContext
     {
         public DiaryContext()
         {
@@ -16,7 +16,7 @@ namespace DiaryApp.Data
         }
 
         public DiaryContext(DbContextOptions dbContextOptions)
-            :base(dbContextOptions)
+            : base(dbContextOptions)
         {
 
         }
@@ -35,8 +35,17 @@ namespace DiaryApp.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<User>()
-       .HasIndex(u => u.Username)
-       .IsUnique();
+            .HasIndex(u => u.Username)
+            .IsUnique();
+
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Note>()
+            .HasIndex(u => u.Title)
+            .IsUnique();
+
+            modelBuilder.Entity<User>().HasMany(x => x.Notes).WithOne().IsRequired().HasForeignKey("UserID");
+
+
         }
 
         public DbSet<User> Users { get; set; }

@@ -78,7 +78,8 @@ namespace DiaryApp.Forms
             // 
             // NotesGridView1
             // 
-            this.NotesGridView1.AllowUserToOrderColumns = true;
+            this.NotesGridView1.AllowUserToOrderColumns = false;
+            this.NotesGridView1.ReadOnly = true;
             this.NotesGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.NotesGridView1.Location = new System.Drawing.Point(470, 118);
             this.NotesGridView1.Name = "NotesGridView1";

@@ -22,7 +22,7 @@ namespace DiaryApp.Data.Models
         [MaxLength(30)]
         public string Password { get; set; }
 
-        public ICollection<Note> Notes { get; set; }
+        public List<Note> Notes { get; set; }
 
         public User(string username, string password)
         {

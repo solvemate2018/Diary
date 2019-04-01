@@ -14,7 +14,8 @@ namespace DiaryApp.Forms
 {
     public partial class LoginForm : Form
     {
-        private UserController UserController = new UserController();
+        UserController UserController = new UserController();
+
         public LoginForm()
         {
             InitializeComponent();
@@ -24,11 +25,10 @@ namespace DiaryApp.Forms
         {
             string username = UsernameTextBox.Text;
             string password = PasswordTextBox.Text;
-            User user = new User(username, password);
             bool canLogin = false;
             try
             {
-                canLogin = UserController.Login(user);
+                canLogin = UserController.Login(username, password);
             }
             catch (Exception ex)
             {
@@ -37,7 +37,7 @@ namespace DiaryApp.Forms
             if (canLogin)
             {
                 this.Close();
-                Form MainForm = new MainWindow(user);
+                Form MainForm = new MainWindow(username, password);
                 MainForm.Show();
             }
 
