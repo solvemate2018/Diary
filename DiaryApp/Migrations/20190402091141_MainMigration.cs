@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DiaryApp.Migrations
 {
-    public partial class main : Migration
+    public partial class MainMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

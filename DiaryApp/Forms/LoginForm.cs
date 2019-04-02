@@ -54,5 +54,10 @@ namespace DiaryApp.Forms
             this.Close();
             registrationForm.Show();
         }
+
+        private void LoginWindow_Close(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

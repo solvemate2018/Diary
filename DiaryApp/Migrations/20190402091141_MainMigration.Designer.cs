@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DiaryApp.Migrations
 {
     [DbContext(typeof(DiaryContext))]
-    [Migration("20190401124916_main")]
-    partial class main
+    [Migration("20190402091141_MainMigration")]
+    partial class MainMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

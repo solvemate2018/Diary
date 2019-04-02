@@ -50,5 +50,10 @@ namespace DiaryApp.Forms
                 MessageBox.Show("You have been registrated", "Messege");
             }
         }
+
+        private void RegistrationWindow_Close(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

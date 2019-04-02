@@ -53,12 +53,25 @@ namespace DiaryApp.Controllers
             Notes.DataSource = currentUser.Notes;
         }
 
-        internal string GetText(string title)
+        public string GetText(string title)
         {
             using (var context = new DiaryContext())
             {
                 return context.Notes.Single(x => x.Title == title).Text;
             }
+        }
+
+        public void DeleteNote(int index)
+        {
+            Note note = currentUser.Notes[index];
+            currentUser.Notes.Remove(note);
+            using (var context = new DiaryContext())
+            {
+                context.Notes.Remove(context.Notes.Single(x => x.ID == note.ID));
+                context.SaveChanges();
+            }
+
+            Notes.DataSource = currentUser.Notes;
         }
     }
 }

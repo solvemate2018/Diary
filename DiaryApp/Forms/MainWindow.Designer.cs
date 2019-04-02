@@ -1,4 +1,5 @@
-﻿using DiaryApp.Data.Models;
+﻿using System;
+using DiaryApp.Data.Models;
 
 namespace DiaryApp.Forms
 {
@@ -153,12 +154,12 @@ namespace DiaryApp.Forms
             this.Controls.Add(this.TitleLabel);
             this.Name = "MainWindow";
             this.Load += new System.EventHandler(this.MainWindow_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_Close);
             ((System.ComponentModel.ISupportInitialize)(this.NotesGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
-
         #endregion
 
         private System.Windows.Forms.Label TitleLabel;

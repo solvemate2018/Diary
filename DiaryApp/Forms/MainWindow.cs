@@ -22,6 +22,7 @@ namespace DiaryApp.Forms
         {
             InitializeComponent(username);
             NoteController.SetCurrentUser(new User(username, password));
+            
         }
 
         private void NewButton_Click(object sender, EventArgs e)
@@ -63,6 +64,9 @@ namespace DiaryApp.Forms
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
+            var index = NotesGridView1.CurrentCell.RowIndex;
+            NoteController.DeleteNote(index);
+            NotesGridView1.DataSource = NoteController.GetBindingSource();
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -74,6 +78,11 @@ namespace DiaryApp.Forms
                 NotesGridView1.Columns["UserId"].Visible = false;
                 NotesGridView1.Columns["Text"].Visible = false;
             }
+        }
+
+        private void MainWindow_Close(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

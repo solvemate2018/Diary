@@ -142,6 +142,7 @@
             this.Controls.Add(this.UsernameTextBox);
             this.Controls.Add(this.RegistrationLabel);
             this.Name = "RegistrationForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(RegistrationWindow_Close);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RegistrationForm";
             this.ResumeLayout(false);
