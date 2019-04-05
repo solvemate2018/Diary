@@ -44,7 +44,7 @@ namespace DiaryApp.Forms
 
             if (isRegistrated)
             {
-                this.Close();
+                this.Hide();
                 LoginForm loginForm = new LoginForm();
                 loginForm.Show();
                 MessageBox.Show("You have been registrated", "Messege");

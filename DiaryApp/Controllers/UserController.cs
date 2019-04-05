@@ -11,8 +11,10 @@ namespace DiaryApp.Controllers
 {
     public class UserController
     {
-        public User currentUser;
 
+        //<summary>
+        // Checking if the user can login with the given info.
+        //</summary>
         public bool Login(string username, string password)
         {
             using (var context = new DiaryContext())
@@ -27,12 +29,14 @@ namespace DiaryApp.Controllers
                 }
                 else
                 {
-                    currentUser = new User(username, password);
                     return true;
                 }
             }
         }
 
+        //<summary>
+        // Checking the information for registering and adding the User into the DB.
+        //</summary>
         public bool Registrate(string username, string password, string confirmPassword)
         {
             if (password != confirmPassword)

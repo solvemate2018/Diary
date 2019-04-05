@@ -16,7 +16,7 @@ namespace DiaryApp.Forms
 {
     public partial class MainWindow : Form
     {
-        NoteController NoteController = new NoteController();
+        NoteController NoteController = new NoteController(new DiaryContext());
 
         public MainWindow(string username, string password)
         {

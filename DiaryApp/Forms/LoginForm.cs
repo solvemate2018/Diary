@@ -36,7 +36,7 @@ namespace DiaryApp.Forms
             }
             if (canLogin)
             {
-                this.Close();
+                this.Hide();
                 Form MainForm = new MainWindow(username, password);
                 MainForm.Show();
             }
@@ -51,7 +51,7 @@ namespace DiaryApp.Forms
         private void RegistrationLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Form registrationForm = new RegistrationForm();
-            this.Close();
+            this.Hide();
             registrationForm.Show();
         }
 
