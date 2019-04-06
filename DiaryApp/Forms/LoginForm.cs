@@ -1,20 +1,12 @@
 ﻿using DiaryApp.Controllers;
-using DiaryApp.Data.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DiaryApp.Forms
 {
     public partial class LoginForm : Form
     {
-        UserController UserController = new UserController();
+        UserController UserController = new UserController(new Data.DiaryContext());
 
         public LoginForm()
         {

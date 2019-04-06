@@ -48,7 +48,7 @@ namespace DiaryApp.Data
 
         }
 
-        public DbSet<User> Users { get; set; }
-        public DbSet<Note> Notes { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Note> Notes { get; set; }
     }
 }
