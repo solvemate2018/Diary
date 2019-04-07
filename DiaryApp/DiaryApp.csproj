@@ -244,6 +244,8 @@
     <Compile Include="Forms\RegistrationForm.Designer.cs">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\Interfaces\IUser.cs" />
+    <Compile Include="Data\Interfaces\IWritable.cs" />
     <Compile Include="Migrations\20190402091141_MainMigration.cs" />
     <Compile Include="Migrations\20190402091141_MainMigration.designer.cs">
       <DependentUpon>20190402091141_MainMigration.cs</DependentUpon>

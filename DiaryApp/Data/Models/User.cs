@@ -1,14 +1,11 @@
-﻿using System;
+﻿using DiaryApp.Interfaces;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DiaryApp.Data.Models
 {
-    public class User
+    public class User: IUser
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

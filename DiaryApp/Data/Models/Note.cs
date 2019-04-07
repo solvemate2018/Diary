@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DiaryApp.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DiaryApp.Data.Models
 {
-    public class Note
+    public class Note: IWritable
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
